@@ -3,35 +3,27 @@
 #### 介绍
 独立的存储引擎jar，满足日常基本使用(MySQL/MSSQL/Oracle/PgSQL)
 
-#### 软件架构
-软件架构说明
+#### 简单DEMO
 
+jdbctest是一个简单测试类，主要是获取连接，然后初始化连接。增删改查在Rdb类中，可以通过BeanCtx.getRdb()获得。
 
-#### 安装教程
+```java
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+jdbctest testObj = new jdbctest();
+// 获取conn对象
+Connection conn = testObj.getConn();
 
-#### 使用说明
+// 初始化连接
+Rdb rdb = new RdbImpl(conn);
+BeanCtx.setConnection(conn);
+BeanCtx.setRdb(rdb);
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+Rdb r2 = BeanCtx.getRdb();
+// 简单查询测试
+Document doc = r2.getDocumentBySql("select * from bpm_maindata where WF_OrUnid = '04899ff608b7004ca0081c003f3abe8506a4'");
+System.out.println(doc.toJson());
+```
 
-#### 参与贡献
+#### 详细文档
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+待补充
