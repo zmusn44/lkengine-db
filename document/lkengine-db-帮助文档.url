@@ -1,0 +1,15 @@
+[DEFAULT]
+BASEURL=http://open.linkey.cn/osbpm/r?wf_num=P_openLinkey_N002&treeid=T_openLinkey_N004&docVn=lkengine_db_1_0
+[DOC_centerFrame]
+BASEURL=http://open.linkey.cn/osbpm/page?wf_num=P_openLinkey_L002&treeid=T_openLinkey_N004&docVn=lkengine_db_1_0
+ORIGURL=page?wf_num=P_openLinkey_L002&treeid=T_openLinkey_N004&docVn=lkengine_db_1_0
+[DOC_centerFrame_centerFrame]
+BASEURL=http://open.linkey.cn/osbpm/r?wf_num=V_openLinkey_GH004&docVn=lkengine_db_1_0
+ORIGURL=r?wf_num=V_openLinkey_GH004&docVn=lkengine_db_1_0
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2
+[InternetShortcut]
+IDList=
+URL=http://open.linkey.cn/osbpm/r?wf_num=P_openLinkey_N002&treeid=T_openLinkey_N004&docVn=lkengine_db_1_0
+IconFile=http://open.linkey.cn/favicon.ico
+IconIndex=1
