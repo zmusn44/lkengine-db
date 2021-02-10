@@ -6,6 +6,7 @@ import cn.linkey.orm.doc.SaveDoc;
 import cn.linkey.orm.factory.BeanCtx;
 import cn.linkey.orm.util.Tools;
 import cn.linkey.orm.util.XmlParser;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.dom4j.Element;
 
 import javax.servlet.http.HttpServletRequest;
@@ -503,6 +504,10 @@ public class DocumentImpl implements Document,Serializable {
             for (int i = 0; i < m; i++) {
                 String fdName = rsMeta.getColumnLabel(i + 1); //取fdname as a 取得的是a的名称
                 String fdValue = rs.getString(fdName);
+
+                // 对数据进行反转义取值
+                fdValue = StringEscapeUtils.unescapeHtml4(fdValue);
+
                 if (fdName.equalsIgnoreCase("xmldata")) {
                     if (fdValue != null && fdValue.length() > 20) { //如果xmldata的值大于20才是有意义的xml数据,不然就不用分析消耗性能
                         fdmap.putAll(Tools.xmlStr2Map(fdValue));

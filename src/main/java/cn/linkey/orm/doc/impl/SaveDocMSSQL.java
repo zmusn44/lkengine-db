@@ -5,6 +5,7 @@ import cn.linkey.orm.doc.Document;
 import cn.linkey.orm.doc.SaveDoc;
 import cn.linkey.orm.factory.BeanCtx;
 import cn.linkey.orm.util.Tools;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.sql.Connection;
 import java.util.HashMap;
@@ -107,10 +108,10 @@ public class SaveDocMSSQL implements SaveDoc {
             else {
                 fdValue = doc.g(fdName);
                 fdValue = fdValue.replace("'", "''"); // 替换单引号为两个单引号
-                // 看存盘时是否需要进行<>的编码
-                //if (BeanCtx.getEnCodeStatus()) {
-                    fdValue = fdValue.replace("<", "&lt;").replace(">", "&gt;");
-                //}
+
+                // 对数据进行转义存储
+                fdValue = StringEscapeUtils.escapeHtml4(fdValue);
+
             }
             String separator = getFieldSeparator(fdList.get(fdName)); // 根据字段类型获得分隔符
             if (separator.equals("") && fdValue.equals("")) {

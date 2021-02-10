@@ -5,6 +5,7 @@ import cn.linkey.orm.doc.Document;
 import cn.linkey.orm.doc.SaveDoc;
 import cn.linkey.orm.factory.BeanCtx;
 import cn.linkey.orm.util.Tools;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.sql.Clob;
 import java.sql.Connection;
@@ -142,9 +143,8 @@ public class SaveDocORACLE implements SaveDoc {
                 fdValue = fdValue.replace("'", "''");
                 if (!fdName.equalsIgnoreCase("xmldata")) {
                     // 看存盘时是否需要进行<>的编码,xmldata字段不能这样替换
-                   // if (BeanCtx.getEnCodeStatus()) {
-                        fdValue = fdValue.replace("<", "&lt;").replace(">", "&gt;");
-                   // }
+                    // 对数据进行转义存储
+                    fdValue = StringEscapeUtils.escapeHtml4(fdValue);
                 }
             }
 
